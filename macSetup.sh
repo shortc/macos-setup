@@ -1,3 +1,5 @@
+set -e
+
 echo "Installing xcode-stuff"
 xcode-select --install
 
@@ -5,8 +7,11 @@ xcode-select --install
 # Install if we don't have it
 if test ! $(which brew); then
   echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/cshort/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Update homebrew recipes
 echo "Updating homebrew..."
@@ -38,7 +43,6 @@ brew_pkgs=(
   ripgrep
   starship
   stow
-  tailscale
   unzip
   vscode-langservers-extracted
   yazi
@@ -115,6 +119,7 @@ apps=(
   notion
   sensiblesidebuttons
   suspicious-package
+  tailscale
   the-unarchiver
   vial
   zoomus
