@@ -82,6 +82,7 @@ sudo ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cl
 echo "Setting up docker buildx"
 sudo ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 
+zsh
 source ~/.zshrc
 # Script halts here because shell needs to reload PATH to be able to access nvm
 
@@ -97,6 +98,7 @@ mkdir -p ~/Code
 cd ~/Code
 git clone https://github.com/helix-editor/helix
 cd helix
+zsh
 source ./zshrc
 # Script halts here again because needs to reload PATH to access cargo
 cargo install --path helix-term --locked
