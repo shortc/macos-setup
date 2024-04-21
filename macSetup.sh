@@ -59,13 +59,6 @@ brew install ${brew_pkgs[@]}
 echo "Cleaning up brew"
 brew cleanup
 
-echo "Copying dotfiles from Github"
-cd ~
-git clone git@github.com:shortc/dotfiles.git .dotfiles
-cd .dotfiles
-mv ~/.zshrc ~/.zshrc.bak
-stow .
-
 #Install Zsh & Oh My Zsh
 echo "Installing Oh My ZSH..."
 curl -L http://install.ohmyz.sh | sh
@@ -73,6 +66,12 @@ curl -L http://install.ohmyz.sh | sh
 echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> $HOME/.zshrc
 echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
 
+echo "Copying dotfiles from Github"
+cd ~
+git clone git@github.com:shortc/dotfiles.git .dotfiles
+cd .dotfiles
+mv ~/.zshrc ~/.zshrc.bak
+stow .
 
 mkdir -p ~/.docker/cli-plugins
 
