@@ -49,8 +49,6 @@ brew_pkgs=(
   vscode-langservers-extracted
   yazi
   zellij
-  zsh-autosuggestions
-  zsh-syntax-highlighting
 )
 
 echo "Install brew packages"
@@ -63,9 +61,6 @@ brew cleanup
 echo "Installing Oh My ZSH..."
 curl -L http://install.ohmyz.sh | sh
 
-echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> $HOME/.zshrc
-echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
-
 echo "Copying dotfiles from Github"
 cd ~
 # Script halts here because needs to add ssh config entry to map host to ssh key
@@ -73,6 +68,9 @@ git clone git@github.com:shortc/dotfiles.git .dotfiles
 cd .dotfiles
 mv ~/.zshrc ~/.zshrc.bak
 stow .
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 mkdir -p ~/.docker/cli-plugins
 
