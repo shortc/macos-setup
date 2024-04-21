@@ -114,6 +114,7 @@ apps=(
   arc
   balenaetcher
   betterdisplay
+  bettertouchtool
   cleanmymac
   cyberduck
   font-caskaydia-cove-nerd-font
