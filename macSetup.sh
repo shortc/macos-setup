@@ -68,6 +68,7 @@ echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlight
 
 echo "Copying dotfiles from Github"
 cd ~
+# Script halts here because needs to add ssh config entry to map host to ssh key
 git clone git@github.com:shortc/dotfiles.git .dotfiles
 cd .dotfiles
 mv ~/.zshrc ~/.zshrc.bak
@@ -81,6 +82,9 @@ sudo ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cl
 echo "Setting up docker buildx"
 sudo ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 
+source ~/.zshrc
+# Script halts here because shell needs to reload PATH to be able to access nvm
+
 echo "Installing node lts"
 nvm install --lts
 nvm use --lts
@@ -93,13 +97,16 @@ mkdir -p ~/Code
 cd ~/Code
 git clone https://github.com/helix-editor/helix
 cd helix
+source ./zshrc
+# Script halts here again because needs to reload PATH to access cargo
 cargo install --path helix-term --locked
 ln -s $PWD/runtime ~/.config/helix/runtime
 hx --grammar fetch
 hx --grammar build
 
 echo "Installing homebrew cask"
-brew install caskroom/cask/brew-cask
+brew install cask
+brew tap homebrew/cask-fonts
 
 # Apps
 apps=(
