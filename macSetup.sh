@@ -1,7 +1,9 @@
 set -e
 
-echo "Installing xcode-stuff"
-xcode-select --install
+if test ! $(which git); then
+  echo "Installing xcode-stuff"
+  xcode-select --install
+fi
 
 # Check for Homebrew,
 # Install if we don't have it
