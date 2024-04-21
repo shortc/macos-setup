@@ -80,7 +80,6 @@ sudo ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cl
 echo "Setting up docker buildx"
 sudo ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 
-source $(brew --prefix nvm)/nvm.sh
 # Script halts here because shell needs to reload PATH to be able to access nvm
 
 echo "Installing node lts"
@@ -129,7 +128,7 @@ apps=(
   tailscale
   the-unarchiver
   vial
-  zoomus
+  visual-studio-code
   zed
 )
 
