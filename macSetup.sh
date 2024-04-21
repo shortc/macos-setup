@@ -80,7 +80,7 @@ sudo ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cl
 echo "Setting up docker buildx"
 sudo ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 
-omz reload
+source $(brew --prefix nvm)/nvm.sh
 # Script halts here because shell needs to reload PATH to be able to access nvm
 
 echo "Installing node lts"
@@ -95,7 +95,7 @@ mkdir -p ~/Code
 cd ~/Code
 git clone https://github.com/helix-editor/helix
 cd helix
-omz reload
+
 # Script halts here again because needs to reload PATH to access cargo
 cargo install --path helix-term --locked
 ln -s $PWD/runtime ~/.config/helix/runtime
